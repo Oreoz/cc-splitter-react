@@ -1,13 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost&display=swap");
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Jost", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+input,
+textarea {
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid gray;
+  font-size: 14px;
+}
+
+input {
+  height: 32px;
+  padding: 0 8px;
+}
+
+textarea {
+  padding: 8px;
+}
+
+.mt-1 {
+  margin-top: 4px;
+}
+
+.mt-2 {
+  margin-top: 8px;
 }
