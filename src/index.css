@@ -1,17 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Jost&display=swap");
 
-body {
-  margin: 0;
+* {
   font-family: "Jost", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  color: #333;
 }
 
 input,
 textarea {
   border-radius: 4px;
   outline: none;
-  border: 1px solid gray;
+  border: 1px solid #c5ccca;
   font-size: 14px;
 }
 

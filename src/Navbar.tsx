@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import { NAVBAR } from "./colors";
 
 const Nav = styled.nav`
   height: 60px;
-  background: #41b3a3;
+  background-color: ${NAVBAR};
   display: flex;
   align-items: center;
   color: white;
