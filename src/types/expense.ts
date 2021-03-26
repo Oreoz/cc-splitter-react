@@ -1,5 +1,7 @@
+import moment from "moment";
+
 export interface Expense {
   amount: number;
-  date: string;
+  date: moment.Moment;
   desc: string;
 }

@@ -1,8 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
+import { SplitProvider } from "./components/SplitProvider";
 import { Navbar } from "./Navbar";
 import { Index } from "./routes/Index";
+import { Splitting } from "./routes/Splitting";
 
 const FlexWrapper = styled.div`
   display: flex;
@@ -21,11 +23,14 @@ function App() {
       <Navbar />
 
       <FillViewport>
-        <Router>
-          <Switch>
-            <Route path="/" exact component={Index} />
-          </Switch>
-        </Router>
+        <SplitProvider>
+          <Router>
+            <Switch>
+              <Route path="/" exact component={Index} />
+              <Route path="/splitting" component={Splitting} />
+            </Switch>
+          </Router>
+        </SplitProvider>
       </FillViewport>
     </FlexWrapper>
   );

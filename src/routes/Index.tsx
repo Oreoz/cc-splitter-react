@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { BUTTON_PRIMARY } from "../colors";
 import { Container } from "../components";
 import { BillTextArea } from "../components/BillTextArea";
+import { SplitContext } from "../components/SplitProvider";
 import { Expense } from "../types/expense";
 
 const Button = styled.button`
@@ -28,7 +30,17 @@ export const Index = () => {
   const [parties, setParties] = useState("");
   const [expenses, setExpenses] = useState<Expense[]>([]);
 
-  const handleOnSubmit = () => {};
+  const { setState } = useContext(SplitContext);
+
+  const history = useHistory();
+
+  const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    setState!({ parties: parties.split(",").map(p => p.trim()), expenses });
+
+    history.push("splitting");
+  };
 
   return (
     <Container>

@@ -1,3 +1,4 @@
+import moment from "moment";
 import React, { FC, useEffect, useState } from "react";
 import { Expense } from "../types/expense";
 
@@ -24,7 +25,7 @@ export const BillTextArea: FC<Props> = ({ onChange }) => {
 
             return {
               amount: negative ? Number(-amount) : Number(amount),
-              date,
+              date: moment(date, "MM DD"),
               desc,
             };
           }
