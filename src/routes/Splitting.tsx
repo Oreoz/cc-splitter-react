@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { SplitContext } from "../components/SplitProvider";
 import { Expense } from "../types/expense";
+import { Separator } from "../components";
 
 type FlexProps = "flex-start" | "flex-end" | "center";
 
@@ -27,11 +28,6 @@ const Col = styled(Flex)`
 const Money = styled.div`
   font-size: 18px;
   font-weight: bold;
-`;
-
-const Separator = styled.div`
-  height: 1px;
-  background-color: #ababab;
 `;
 
 const Heading = styled.h3`
