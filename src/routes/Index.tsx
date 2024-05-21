@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Button, Container } from "../components";
+import { Button } from "../components";
 import { BillTextArea } from "../components/BillTextArea";
 import { SplitContext } from "../components/SplitProvider";
 import { Expense } from "../types/expense";
@@ -22,26 +22,24 @@ export const Index = () => {
   };
 
   return (
-    <Container>
-      <form
-        style={{ display: "flex", flexDirection: "column" }}
-        onSubmit={handleOnSubmit}
-      >
-        <label htmlFor="parties">Parties</label>
+    <form
+      style={{ display: "flex", flexDirection: "column" }}
+      onSubmit={handleOnSubmit}
+    >
+      <label htmlFor="parties">Parties</label>
 
-        <input
-          type="text"
-          name="parties"
-          value={parties}
-          onChange={(e) => setParties(e.target.value)}
-        />
+      <input
+        type="text"
+        name="parties"
+        value={parties}
+        onChange={(e) => setParties(e.target.value)}
+      />
 
-        <BillTextArea onChange={(parsed) => setExpenses(parsed)} />
+      <BillTextArea onChange={(parsed) => setExpenses(parsed)} />
 
-        <Button className="mt-2" type="submit">
-          Split
-        </Button>
-      </form>
-    </Container>
+      <Button className="mt-2" type="submit">
+        Split
+      </Button>
+    </form>
   );
 };

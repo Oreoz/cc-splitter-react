@@ -1,7 +1,6 @@
 import React, { Fragment, useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import { Container } from "../components";
 import { SplitContext } from "../components/SplitProvider";
 import { Expense } from "../types/expense";
 
@@ -80,7 +79,7 @@ export const Splitting = () => {
   };
 
   return (
-    <Container>
+    <>
       <Flex justify="space-between">
         {state.parties.map((party, index) => (
           <Col key={index}>
@@ -133,6 +132,6 @@ export const Splitting = () => {
           <Separator />
         </Fragment>
       ))}
-    </Container>
+    </>
   );
 };
