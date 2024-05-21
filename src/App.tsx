@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
 import { SplitProvider } from "./components/SplitProvider";
-import { Navbar } from "./Navbar";
+import { Navbar } from "./nav";
 import { Index } from "./routes/Index";
 import { Splitting } from "./routes/Splitting";
 
