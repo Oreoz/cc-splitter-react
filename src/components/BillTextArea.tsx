@@ -1,14 +1,15 @@
 import moment from "moment";
-import React, { FC, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Expense } from "../types/expense";
 
-const FRENCH_MASTER_CARD_PATTERN = /(\d{2} \d{2}) (.*) (\d{2} \d{2}) (.*) (\d+\.\d+)(-{0,1})$/;
+const FRENCH_MASTER_CARD_PATTERN =
+  /(\d{2} \d{2}) (.*) (\d{2} \d{2}) (.*) (\d+\.\d+)(-{0,1})$/;
 
-interface Props {
+type Props = {
   onChange: (expenses: Expense[]) => void;
-}
+};
 
-export const BillTextArea: FC<Props> = ({ onChange }) => {
+export const BillTextArea = ({ onChange }: Props) => {
   const [expenses, setExpenses] = useState<Expense[]>([]);
 
   const handleOnChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -17,7 +18,7 @@ export const BillTextArea: FC<Props> = ({ onChange }) => {
     const parsed =
       value
         .split("\n")
-        .map(line => {
+        .map((line) => {
           const data = FRENCH_MASTER_CARD_PATTERN.exec(line);
 
           if (data) {
@@ -33,12 +34,11 @@ export const BillTextArea: FC<Props> = ({ onChange }) => {
           return null;
         })
         .filter((e): e is Expense => e !== null)
-        .filter(e => e.desc !== "PAIEMENT RECU MERCI!") ?? [];
+        .filter((e) => e.desc !== "PAIEMENT RECU MERCI!") ?? [];
 
     setExpenses(parsed);
+    onChange(parsed);
   };
-
-  useEffect(() => onChange(expenses), [expenses, onChange]);
 
   return (
     <>
