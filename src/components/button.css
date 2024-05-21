@@ -1,0 +1,18 @@
+.button {
+  height: 32px;
+  border-radius: 12px;
+  border: solid 1px #116466;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #116466;
+
+  transition: background-color 0.4s ease;
+
+  &:active,
+  &:hover {
+    color: white;
+    background-color: #116466;
+  }
+}

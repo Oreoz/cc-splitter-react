@@ -1,7 +1,7 @@
 import React from "react";
 import "./nav.css";
 
-export const Navbar = () => {
+export const Nav = () => {
   return (
     <nav>
       <span role="img" aria-label="credit card emoji">
