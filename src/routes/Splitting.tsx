@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { SplitContext } from "../components/SplitProvider";
 import { Expense } from "../types/expense";
-import { Separator } from "../components";
+import { Button, Heading, Separator } from "../components";
 
 type FlexProps = "flex-start" | "flex-end" | "center";
 
@@ -28,20 +28,6 @@ const Col = styled(Flex)`
 const Money = styled.div`
   font-size: 18px;
   font-weight: bold;
-`;
-
-const Heading = styled.h3`
-  margin: 0;
-`;
-
-const LinkButton = styled.button`
-  border: none;
-  outline: none;
-  cursor: pointer;
-  text-decoration: underline;
-  font-size: 14px;
-  padding: 0;
-  margin-right: 8px;
 `;
 
 const Description = styled.div``;
@@ -108,14 +94,16 @@ export const Splitting = () => {
               <Heading>{e.desc}</Heading>
               <Description>{e.date.format("MMM Do")}</Description>
 
-              <Flex style={{ marginTop: 8 }}>
+              <Flex style={{ marginTop: 8, gap: 8 }}>
                 {state.parties.map((p, index) => (
-                  <LinkButton
+                  <Button
+                    kind="secondary"
                     key={index}
                     onClick={() => handleOnClick(index, e)}
+                    size="sm"
                   >
                     Assign to {p}
-                  </LinkButton>
+                  </Button>
                 ))}
               </Flex>
             </Col>
