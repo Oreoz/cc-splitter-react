@@ -9,12 +9,13 @@ export type ButtonProps = {
 
 export const Button = ({
   children,
+  className,
   kind = "primary",
   size = "md",
   ...rest
 }: ButtonProps) => {
   return (
-    <button {...rest} className={classNames("button", kind, size)}>
+    <button {...rest} className={classNames("button", kind, size, className)}>
       {children}
     </button>
   );

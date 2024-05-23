@@ -7,7 +7,9 @@ type Actions = {
   setState: (expenses: Expense[], parties: string[]) => void;
 };
 
-export const useDataStore = create<State & Actions>((set) => ({
+export type DataStore = State & Actions;
+
+export const useDataStore = create<DataStore>((set) => ({
   expenses: [],
   parties: [],
   setState: (expenses, parties) => set(() => ({ parties, expenses })),

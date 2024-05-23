@@ -39,7 +39,7 @@ export const Index = () => {
       <BillTextArea onChange={(parsed) => setExpenses(parsed)} />
 
       <Button className="mt-2" type="submit">
-        Split
+        Start splitting
       </Button>
     </form>
   );

@@ -40,6 +40,10 @@ export const BillTextArea = ({ onChange }: Props) => {
     onChange(parsed);
   };
 
+  const formattedTotal = expenses
+    .reduce((acc, current) => acc + current.amount, 0)
+    .toFixed(2);
+
   return (
     <>
       <label htmlFor="bill-data" className="mt-2">
@@ -53,8 +57,7 @@ export const BillTextArea = ({ onChange }: Props) => {
       />
 
       <i className="mt-1">
-        {expenses.length} expenses totaling{" "}
-        {expenses.reduce((acc, current) => acc + current.amount, 0)}$ detected.
+        {expenses.length} expenses totaling {formattedTotal}$ detected.
       </i>
     </>
   );
