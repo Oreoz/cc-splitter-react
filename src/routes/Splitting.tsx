@@ -1,29 +1,8 @@
 import React, { Fragment, useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
-import styled from "styled-components";
 import { Button, Heading, Separator, Text } from "../components";
 import { SplitContext } from "../components/SplitProvider";
 import { Expense } from "../types/expense";
-
-type FlexProps = "flex-start" | "flex-end" | "center";
-
-type Alignment = FlexProps | "baseline" | "stretch";
-
-type Justification =
-  | FlexProps
-  | "space-between"
-  | "space-around"
-  | "space-evenly";
-
-const Flex = styled.div<{ align?: Alignment; justify?: Justification }>`
-  display: flex;
-  align-items: ${(props) => props.align ?? "flex-start"};
-  justify-content: ${(props) => props.justify ?? "flex-start"};
-`;
-
-const Col = styled(Flex)`
-  flex-direction: column;
-`;
 
 const formatter = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -55,9 +34,9 @@ export const Splitting = () => {
 
   return (
     <>
-      <Flex justify="space-between">
+      <div className="flex j-space-between">
         {state.parties.map((party, index) => (
-          <Col key={index}>
+          <div className="flex column" key={index}>
             <div>{party}</div>
 
             <Text size="lg" weight="bold">
@@ -70,24 +49,23 @@ export const Splitting = () => {
                   )
                 : formatter.format(0)}
             </Text>
-          </Col>
+          </div>
         ))}
-      </Flex>
+      </div>
 
       <Separator />
 
       {unassigned.map((e, index) => (
         <Fragment key={index}>
-          <Flex
+          <div
+            className="flex a-center j-space-between"
             style={{ margin: "16px 0" }}
-            align="center"
-            justify="space-between"
           >
-            <Col>
+            <div className="flex column">
               <Heading>{e.desc}</Heading>
               <Text>{e.date.format("MMM Do")}</Text>
 
-              <Flex style={{ marginTop: 8, gap: 8 }}>
+              <div className="flex" style={{ marginTop: 8, gap: 8 }}>
                 {state.parties.map((p, index) => (
                   <Button
                     kind="secondary"
@@ -98,8 +76,8 @@ export const Splitting = () => {
                     Assign to {p}
                   </Button>
                 ))}
-              </Flex>
-            </Col>
+              </div>
+            </div>
 
             <Text
               size="lg"
@@ -108,7 +86,7 @@ export const Splitting = () => {
             >
               {formatter.format(Math.abs(e.amount))}
             </Text>
-          </Flex>
+          </div>
 
           <Separator />
         </Fragment>

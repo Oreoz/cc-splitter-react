@@ -35,3 +35,19 @@ textarea {
 .mt-2 {
   margin-top: 8px;
 }
+
+.flex {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.a-center {
+  align-items: center;
+}
+
+.j-space-between {
+  justify-content: space-between;
+}
