@@ -1,24 +1,25 @@
-import React, { useContext, useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState } from "react";
 import { Button } from "../components";
 import { BillTextArea } from "../components/BillTextArea";
-import { SplitContext } from "../components/SplitProvider";
+import { useDataStore } from "../stores/data";
+import { useSplittingStore } from "../stores/splitting";
 import { Expense } from "../types/expense";
 
 export const Index = () => {
   const [parties, setParties] = useState("");
   const [expenses, setExpenses] = useState<Expense[]>([]);
 
-  const { setState } = useContext(SplitContext);
-
-  const history = useHistory();
+  const { setSplitting } = useSplittingStore();
+  const { setState } = useDataStore();
 
   const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    setState!({ parties: parties.split(",").map((p) => p.trim()), expenses });
-
-    history.push("splitting");
+    setState(
+      expenses,
+      parties.split(",").map((p) => p.trim()),
+    );
+    setSplitting(true);
   };
 
   return (

@@ -1,8 +1,7 @@
 import React, { Fragment, useContext, useState } from "react";
-import { useHistory } from "react-router-dom";
 import { Button, Heading, Separator, Text } from "../components";
-import { SplitContext } from "../components/SplitProvider";
 import { Expense } from "../types/expense";
+import { useDataStore } from "../stores/data";
 
 const formatter = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -10,17 +9,10 @@ const formatter = new Intl.NumberFormat("en-US", {
 });
 
 export const Splitting = () => {
-  const { state } = useContext(SplitContext);
+  const { expenses, parties } = useDataStore();
 
-  const [unassigned, setUnassigned] = useState(state?.expenses ?? []);
+  const [unassigned, setUnassigned] = useState(expenses ?? []);
   const [assignments, setAssignments] = useState<any>({});
-
-  const history = useHistory();
-
-  if (!state) {
-    history.push("/");
-    return <></>;
-  }
 
   const handleOnClick = (index: number, expense: Expense) => {
     const copy = { ...assignments };
@@ -35,7 +27,7 @@ export const Splitting = () => {
   return (
     <>
       <div className="flex j-space-between">
-        {state.parties.map((party, index) => (
+        {parties.map((party, index) => (
           <div className="flex column" key={index}>
             <div>{party}</div>
 
@@ -66,7 +58,7 @@ export const Splitting = () => {
               <Text>{e.date.format("MMM Do")}</Text>
 
               <div className="flex" style={{ marginTop: 8, gap: 8 }}>
-                {state.parties.map((p, index) => (
+                {parties.map((p, index) => (
                   <Button
                     kind="secondary"
                     key={index}

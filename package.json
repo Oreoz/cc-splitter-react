@@ -10,27 +10,23 @@
   },
   "dependencies": {
     "@types/node": "^20",
-    "@types/react": "^17",
-    "@types/react-dom": "^17",
-    "@types/react-router-dom": "^5",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
     "classnames": "^2",
     "moment": "^2",
-    "react": "^17",
-    "react-dom": "^17",
-    "react-router-dom": "^5",
-    "typescript": "^3.7.5"
+    "react": "^18",
+    "react-dom": "^18",
+    "typescript": "^5",
+    "zustand": "^4"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6",
-    "@testing-library/react": "^12",
-    "@testing-library/user-event": "^12",
+    "@testing-library/react": "^15",
+    "@testing-library/user-event": "^14",
     "happy-dom": "^14",
     "prettier": "^3",
     "vite": "^5",
     "vitest": "^1"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
