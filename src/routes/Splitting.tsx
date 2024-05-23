@@ -1,9 +1,9 @@
 import React, { Fragment, useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
+import { Button, Heading, Separator, Text } from "../components";
 import { SplitContext } from "../components/SplitProvider";
 import { Expense } from "../types/expense";
-import { Button, Heading, Separator } from "../components";
 
 type FlexProps = "flex-start" | "flex-end" | "center";
 
@@ -24,13 +24,6 @@ const Flex = styled.div<{ align?: Alignment; justify?: Justification }>`
 const Col = styled(Flex)`
   flex-direction: column;
 `;
-
-const Money = styled.div`
-  font-size: 18px;
-  font-weight: bold;
-`;
-
-const Description = styled.div``;
 
 const formatter = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -67,7 +60,7 @@ export const Splitting = () => {
           <Col key={index}>
             <div>{party}</div>
 
-            <Money>
+            <Text size="lg" weight="bold">
               {assignments[index]
                 ? formatter.format(
                     assignments[index].reduce(
@@ -76,7 +69,7 @@ export const Splitting = () => {
                     ),
                   )
                 : formatter.format(0)}
-            </Money>
+            </Text>
           </Col>
         ))}
       </Flex>
@@ -92,7 +85,7 @@ export const Splitting = () => {
           >
             <Col>
               <Heading>{e.desc}</Heading>
-              <Description>{e.date.format("MMM Do")}</Description>
+              <Text>{e.date.format("MMM Do")}</Text>
 
               <Flex style={{ marginTop: 8, gap: 8 }}>
                 {state.parties.map((p, index) => (
@@ -108,9 +101,13 @@ export const Splitting = () => {
               </Flex>
             </Col>
 
-            <Money style={{ color: e.amount > 0 ? "black" : "green" }}>
+            <Text
+              size="lg"
+              style={{ color: e.amount > 0 ? "black" : "green" }}
+              weight="bold"
+            >
               {formatter.format(Math.abs(e.amount))}
-            </Money>
+            </Text>
           </Flex>
 
           <Separator />

@@ -1,0 +1,30 @@
+.text {
+  margin: 0;
+
+  /* Sizes */
+  &.sm {
+    font-size: 12px;
+  }
+
+  &.md {
+    font-size: 14px;
+  }
+
+  &.lg {
+    font-size: 16px;
+  }
+
+  /* Weights */
+
+  &.regular {
+    font-weight: 400;
+  }
+
+  &.semibold {
+    font-weight: 600;
+  }
+
+  &.bold {
+    font-weight: 700;
+  }
+}
